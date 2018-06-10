@@ -1,16 +1,15 @@
 'use strict';
 
 var loopback = require('loopback');
+var path = require('path');
 var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
-app.get('/:name(.*)', (req, res) => {
-
-  console.log('req.param');
-  console.log(req.param);
-  return res.sendFile(req.param.name, {root: __dirname + '/client/'})
-})
+// if no hash, send to index
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '/', 'index.html'));
+});
 
 app.start = function() {
   // start the web server
