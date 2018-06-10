@@ -5,8 +5,11 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+app.get('/', (req, res) => res.sendFile('index.html', {root: __dirname + '/client/'}))
+
 app.start = function() {
   // start the web server
+
   return app.listen(function() {
     app.emit('started');
     var baseUrl = app.get('url').replace(/\/$/, '');
