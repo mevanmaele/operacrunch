@@ -39,7 +39,7 @@
     "dataSource": null
   },
   "company": {
-    "dataSource": "db",
+    "dataSource": "operacrunch",
     "public": true
   }
 }
