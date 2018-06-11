@@ -6,9 +6,17 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+// find path to client folder containing the website
+const clientPath = path.resolve(__dirname, '../client');
+
 // if no hash, send to index
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/', 'index.html'));
+  res.sendFile(path.join(clientPath, '/', 'index.html'));
+});
+
+app.get(/^(.+)$/, (req, res) => {
+  const scriptPath = req.params[0];
+  res.sendFile(path.join(clientPath, '/', scriptPath));
 });
 
 app.start = function() {
